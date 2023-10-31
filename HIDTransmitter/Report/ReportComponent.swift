@@ -17,4 +17,8 @@ enum ComponentType: Int {
     case date
     case host
     case cpuUsage
+
+    var maxLength: Int {
+        30
+    }
 }

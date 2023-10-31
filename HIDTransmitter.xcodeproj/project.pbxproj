@@ -20,7 +20,19 @@
 		50ACB1E32AEEFB15007C330C /* HostReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1E22AEEFB15007C330C /* HostReport.swift */; };
 		50ACB1E52AEEFE5E007C330C /* ReportComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1E42AEEFE5E007C330C /* ReportComponent.swift */; };
 		50ACB1E72AEF00D3007C330C /* CPUUsageReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1E62AEF00D3007C330C /* CPUUsageReport.swift */; };
+		50ACB1EF2AF1B251007C330C /* HostReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1EE2AF1B251007C330C /* HostReportTests.swift */; };
+		50ACB1F72AF1B52F007C330C /* HostMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1F62AF1B52F007C330C /* HostMock.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		50ACB1F02AF1B251007C330C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 509BDF202AE9B9DB0081B12E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 509BDF272AE9B9DB0081B12E;
+			remoteInfo = HIDTransmitter;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		509BDF282AE9B9DB0081B12E /* HIDTransmitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HIDTransmitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +49,9 @@
 		50ACB1E22AEEFB15007C330C /* HostReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostReport.swift; sourceTree = "<group>"; };
 		50ACB1E42AEEFE5E007C330C /* ReportComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportComponent.swift; sourceTree = "<group>"; };
 		50ACB1E62AEF00D3007C330C /* CPUUsageReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUUsageReport.swift; sourceTree = "<group>"; };
+		50ACB1EC2AF1B251007C330C /* HIDTransmitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HIDTransmitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		50ACB1EE2AF1B251007C330C /* HostReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostReportTests.swift; sourceTree = "<group>"; };
+		50ACB1F62AF1B52F007C330C /* HostMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +63,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50ACB1E92AF1B251007C330C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -55,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				509BDF2A2AE9B9DB0081B12E /* HIDTransmitter */,
+				50ACB1ED2AF1B251007C330C /* HIDTransmitterTests */,
 				509BDF292AE9B9DB0081B12E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				509BDF282AE9B9DB0081B12E /* HIDTransmitter.app */,
+				50ACB1EC2AF1B251007C330C /* HIDTransmitterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +127,23 @@
 			path = Report;
 			sourceTree = "<group>";
 		};
+		50ACB1ED2AF1B251007C330C /* HIDTransmitterTests */ = {
+			isa = PBXGroup;
+			children = (
+				50ACB1EE2AF1B251007C330C /* HostReportTests.swift */,
+				50ACB1F52AF1B525007C330C /* Mocks */,
+			);
+			path = HIDTransmitterTests;
+			sourceTree = "<group>";
+		};
+		50ACB1F52AF1B525007C330C /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				50ACB1F62AF1B52F007C330C /* HostMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,6 +167,24 @@
 			productReference = 509BDF282AE9B9DB0081B12E /* HIDTransmitter.app */;
 			productType = "com.apple.product-type.application";
 		};
+		50ACB1EB2AF1B251007C330C /* HIDTransmitterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50ACB1F22AF1B252007C330C /* Build configuration list for PBXNativeTarget "HIDTransmitterTests" */;
+			buildPhases = (
+				50ACB1E82AF1B251007C330C /* Sources */,
+				50ACB1E92AF1B251007C330C /* Frameworks */,
+				50ACB1EA2AF1B251007C330C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50ACB1F12AF1B251007C330C /* PBXTargetDependency */,
+			);
+			name = HIDTransmitterTests;
+			productName = HIDTransmitterTests;
+			productReference = 50ACB1EC2AF1B251007C330C /* HIDTransmitterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -138,6 +197,10 @@
 				TargetAttributes = {
 					509BDF272AE9B9DB0081B12E = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					50ACB1EB2AF1B251007C330C = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 509BDF272AE9B9DB0081B12E;
 					};
 				};
 			};
@@ -158,6 +221,7 @@
 			projectRoot = "";
 			targets = (
 				509BDF272AE9B9DB0081B12E /* HIDTransmitter */,
+				50ACB1EB2AF1B251007C330C /* HIDTransmitterTests */,
 			);
 		};
 /* End PBXProject section */
@@ -169,6 +233,13 @@
 			files = (
 				509BDF332AE9B9DD0081B12E /* Preview Assets.xcassets in Resources */,
 				509BDF302AE9B9DD0081B12E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50ACB1EA2AF1B251007C330C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,7 +263,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50ACB1E82AF1B251007C330C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50ACB1EF2AF1B251007C330C /* HostReportTests.swift in Sources */,
+				50ACB1F72AF1B52F007C330C /* HostMock.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		50ACB1F12AF1B251007C330C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 509BDF272AE9B9DB0081B12E /* HIDTransmitter */;
+			targetProxy = 50ACB1F02AF1B251007C330C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		509BDF352AE9B9DD0081B12E /* Debug */ = {
@@ -367,6 +455,40 @@
 			};
 			name = Release;
 		};
+		50ACB1F32AF1B252007C330C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GK3FZH5543;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.codehawks.HIDTransmitterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HIDTransmitter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HIDTransmitter";
+			};
+			name = Debug;
+		};
+		50ACB1F42AF1B252007C330C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GK3FZH5543;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.codehawks.HIDTransmitterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HIDTransmitter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HIDTransmitter";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -384,6 +506,15 @@
 			buildConfigurations = (
 				509BDF382AE9B9DD0081B12E /* Debug */,
 				509BDF392AE9B9DD0081B12E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50ACB1F22AF1B252007C330C /* Build configuration list for PBXNativeTarget "HIDTransmitterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50ACB1F32AF1B252007C330C /* Debug */,
+				50ACB1F42AF1B252007C330C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

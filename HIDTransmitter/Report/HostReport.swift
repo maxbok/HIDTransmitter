@@ -13,8 +13,32 @@ struct HostReport: ReportComponent {
         .host
     }
 
-    var name: String? {
-        Host.current().localizedName
+    var display: String {
+        name ?? ""
+    }
+
+    var byteArray: [UInt8] {
+        guard let name else { return [] }
+
+        return [UInt8](name.utf8)
+    }
+
+    private var name: String? {
+        guard let name = host.localizedName else { return nil }
+
+        return String(name.prefix(componentType.maxLength))
+    }
+
+    private let host: HostConvertible
+
+    init(host: HostConvertible = Host.current()) {
+        self.host = host
     }
 
 }
+
+protocol HostConvertible {
+    var localizedName: String? { get }
+}
+
+extension Host: HostConvertible {}
