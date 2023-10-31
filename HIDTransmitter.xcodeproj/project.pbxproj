@@ -16,6 +16,10 @@
 		509BDF442AEDB5DD0081B12E /* DataAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BDF432AEDB5DD0081B12E /* DataAggregator.swift */; };
 		50ACB1DC2AEDBA8D007C330C /* HIDDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1DB2AEDBA8D007C330C /* HIDDevice+Utils.swift */; };
 		50ACB1DE2AEECBA8007C330C /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1DD2AEECBA8007C330C /* Report.swift */; };
+		50ACB1E02AEEFABD007C330C /* DateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1DF2AEEFABD007C330C /* DateReport.swift */; };
+		50ACB1E32AEEFB15007C330C /* HostReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1E22AEEFB15007C330C /* HostReport.swift */; };
+		50ACB1E52AEEFE5E007C330C /* ReportComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1E42AEEFE5E007C330C /* ReportComponent.swift */; };
+		50ACB1E72AEF00D3007C330C /* CPUUsageReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1E62AEF00D3007C330C /* CPUUsageReport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +33,10 @@
 		509BDF432AEDB5DD0081B12E /* DataAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAggregator.swift; sourceTree = "<group>"; };
 		50ACB1DB2AEDBA8D007C330C /* HIDDevice+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HIDDevice+Utils.swift"; sourceTree = "<group>"; };
 		50ACB1DD2AEECBA8007C330C /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		50ACB1DF2AEEFABD007C330C /* DateReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateReport.swift; sourceTree = "<group>"; };
+		50ACB1E22AEEFB15007C330C /* HostReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostReport.swift; sourceTree = "<group>"; };
+		50ACB1E42AEEFE5E007C330C /* ReportComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportComponent.swift; sourceTree = "<group>"; };
+		50ACB1E62AEF00D3007C330C /* CPUUsageReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUUsageReport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +75,7 @@
 				509BDF412AED96EE0081B12E /* DeviceMonitor.swift */,
 				50ACB1DB2AEDBA8D007C330C /* HIDDevice+Utils.swift */,
 				509BDF432AEDB5DD0081B12E /* DataAggregator.swift */,
-				50ACB1DD2AEECBA8007C330C /* Report.swift */,
+				50ACB1E12AEEFAC3007C330C /* Report */,
 				509BDF2F2AE9B9DD0081B12E /* Assets.xcassets */,
 				509BDF342AE9B9DD0081B12E /* HIDTransmitter.entitlements */,
 				509BDF312AE9B9DD0081B12E /* Preview Content */,
@@ -81,6 +89,18 @@
 				509BDF322AE9B9DD0081B12E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		50ACB1E12AEEFAC3007C330C /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				50ACB1DD2AEECBA8007C330C /* Report.swift */,
+				50ACB1E42AEEFE5E007C330C /* ReportComponent.swift */,
+				50ACB1DF2AEEFABD007C330C /* DateReport.swift */,
+				50ACB1E22AEEFB15007C330C /* HostReport.swift */,
+				50ACB1E62AEF00D3007C330C /* CPUUsageReport.swift */,
+			);
+			path = Report;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,9 +180,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				509BDF422AED96EE0081B12E /* DeviceMonitor.swift in Sources */,
+				50ACB1E52AEEFE5E007C330C /* ReportComponent.swift in Sources */,
+				50ACB1E72AEF00D3007C330C /* CPUUsageReport.swift in Sources */,
 				509BDF2E2AE9B9DB0081B12E /* ContentView.swift in Sources */,
 				509BDF442AEDB5DD0081B12E /* DataAggregator.swift in Sources */,
+				50ACB1E02AEEFABD007C330C /* DateReport.swift in Sources */,
 				509BDF2C2AE9B9DB0081B12E /* HIDTransmitterApp.swift in Sources */,
+				50ACB1E32AEEFB15007C330C /* HostReport.swift in Sources */,
 				50ACB1DC2AEDBA8D007C330C /* HIDDevice+Utils.swift in Sources */,
 				50ACB1DE2AEECBA8007C330C /* Report.swift in Sources */,
 			);
