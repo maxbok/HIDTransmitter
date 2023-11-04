@@ -11,7 +11,7 @@ import USBDeviceSwift
 
 class DeviceMonitor {
 
-    private var devices: [HIDDevice] = []
+    @Published private(set) var device: HIDDevice?
 
     private let rfDeviceMonitor: HIDDeviceMonitor
     private let rfDeviceDaemon: Thread
@@ -39,12 +39,11 @@ class DeviceMonitor {
         rfDeviceDaemon.start()
     }
 
-    func write(report: Report) {
-        guard let data = report.data else { return }
+    func write(reportComponent: ReportComponent) {
+        guard let device else { return }
 
-        devices.forEach {
-            $0.write(data: data)
-        }
+        reportComponent.updateData()
+        device.write(report: reportComponent)
     }
 
     // MARK: -
@@ -52,11 +51,12 @@ class DeviceMonitor {
     func setupBindings() {
         NotificationCenter.default.publisher(for: .HIDDeviceConnected)
             .sink { [weak self] notification in
-                guard let hidDevice = notification.device,
-                      self?.devices.contains(where: { $0.id == hidDevice.id }) == false
+                guard let self,
+                      let hidDevice = notification.device,
+                      self.device == nil
                 else { return }
                 
-                self?.devices.append(hidDevice)
+                self.device = hidDevice
 
                 print("Device connected: \(hidDevice)")
             }
@@ -64,11 +64,13 @@ class DeviceMonitor {
 
         NotificationCenter.default.publisher(for: .HIDDeviceDisconnected)
             .sink { [weak self] notification in
-                guard let object = notification.object as? [String: Any],
-                      let id = object["id"] as? Int32
+                guard let self,
+                      let object = notification.object as? [String: Any],
+                      let id = object["id"] as? Int32,
+                      self.device?.id == id
                 else { return }
 
-                self?.devices.removeAll(where: { $0.id == id })
+                device = nil
 
                 print("Device disconnected: \(id)")
             }

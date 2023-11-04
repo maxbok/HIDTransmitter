@@ -10,10 +10,7 @@ import Foundation
 class CPUUsageReport: ReportComponent {
 
     let maxSize: Int
-
-    var componentType: ComponentType {
-        .cpuUsage
-    }
+    let type: ComponentType = .cpuUsage
 
     var display: String {
         byteArray

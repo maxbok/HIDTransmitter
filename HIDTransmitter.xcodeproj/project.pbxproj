@@ -10,6 +10,7 @@
 		5022428B2AF5C7CB00506C45 /* CPUInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022428A2AF5C7CB00506C45 /* CPUInfoProvider.swift */; };
 		5022428D2AF5C8E500506C45 /* CPUInfoProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022428C2AF5C8E500506C45 /* CPUInfoProviderMock.swift */; };
 		5022428F2AF5C93300506C45 /* CPUUsageReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022428E2AF5C93300506C45 /* CPUUsageReportTests.swift */; };
+		502242912AF6F0FA00506C45 /* ReportComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502242902AF6F0FA00506C45 /* ReportComponentTests.swift */; };
 		509BDF2C2AE9B9DB0081B12E /* HIDTransmitterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BDF2B2AE9B9DB0081B12E /* HIDTransmitterApp.swift */; };
 		509BDF2E2AE9B9DB0081B12E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BDF2D2AE9B9DB0081B12E /* ContentView.swift */; };
 		509BDF302AE9B9DD0081B12E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509BDF2F2AE9B9DD0081B12E /* Assets.xcassets */; };
@@ -18,7 +19,6 @@
 		509BDF422AED96EE0081B12E /* DeviceMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BDF412AED96EE0081B12E /* DeviceMonitor.swift */; };
 		509BDF442AEDB5DD0081B12E /* DataAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BDF432AEDB5DD0081B12E /* DataAggregator.swift */; };
 		50ACB1DC2AEDBA8D007C330C /* HIDDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1DB2AEDBA8D007C330C /* HIDDevice+Utils.swift */; };
-		50ACB1DE2AEECBA8007C330C /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1DD2AEECBA8007C330C /* Report.swift */; };
 		50ACB1E02AEEFABD007C330C /* DateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1DF2AEEFABD007C330C /* DateReport.swift */; };
 		50ACB1E32AEEFB15007C330C /* HostReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1E22AEEFB15007C330C /* HostReport.swift */; };
 		50ACB1E52AEEFE5E007C330C /* ReportComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1E42AEEFE5E007C330C /* ReportComponent.swift */; };
@@ -45,6 +45,7 @@
 		5022428A2AF5C7CB00506C45 /* CPUInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUInfoProvider.swift; sourceTree = "<group>"; };
 		5022428C2AF5C8E500506C45 /* CPUInfoProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUInfoProviderMock.swift; sourceTree = "<group>"; };
 		5022428E2AF5C93300506C45 /* CPUUsageReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUUsageReportTests.swift; sourceTree = "<group>"; };
+		502242902AF6F0FA00506C45 /* ReportComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportComponentTests.swift; sourceTree = "<group>"; };
 		509BDF282AE9B9DB0081B12E /* HIDTransmitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HIDTransmitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		509BDF2B2AE9B9DB0081B12E /* HIDTransmitterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIDTransmitterApp.swift; sourceTree = "<group>"; };
 		509BDF2D2AE9B9DB0081B12E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		509BDF412AED96EE0081B12E /* DeviceMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceMonitor.swift; sourceTree = "<group>"; };
 		509BDF432AEDB5DD0081B12E /* DataAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAggregator.swift; sourceTree = "<group>"; };
 		50ACB1DB2AEDBA8D007C330C /* HIDDevice+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HIDDevice+Utils.swift"; sourceTree = "<group>"; };
-		50ACB1DD2AEECBA8007C330C /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		50ACB1DF2AEEFABD007C330C /* DateReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateReport.swift; sourceTree = "<group>"; };
 		50ACB1E22AEEFB15007C330C /* HostReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostReport.swift; sourceTree = "<group>"; };
 		50ACB1E42AEEFE5E007C330C /* ReportComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportComponent.swift; sourceTree = "<group>"; };
@@ -141,7 +141,6 @@
 		50ACB1E12AEEFAC3007C330C /* Report */ = {
 			isa = PBXGroup;
 			children = (
-				50ACB1DD2AEECBA8007C330C /* Report.swift */,
 				50ACB1E42AEEFE5E007C330C /* ReportComponent.swift */,
 				50ACB1FE2AF3EA36007C330C /* Date */,
 				50ACB2012AF3EA53007C330C /* Host */,
@@ -156,6 +155,7 @@
 				50ACB1EE2AF1B251007C330C /* HostReportTests.swift */,
 				50ACB1F82AF2F44B007C330C /* DateReportTests.swift */,
 				5022428E2AF5C93300506C45 /* CPUUsageReportTests.swift */,
+				502242902AF6F0FA00506C45 /* ReportComponentTests.swift */,
 				50ACB1F52AF1B525007C330C /* Mocks */,
 			);
 			path = HIDTransmitterTests;
@@ -307,7 +307,6 @@
 				50ACB1E32AEEFB15007C330C /* HostReport.swift in Sources */,
 				50ACB1DC2AEDBA8D007C330C /* HIDDevice+Utils.swift in Sources */,
 				5022428B2AF5C7CB00506C45 /* CPUInfoProvider.swift in Sources */,
-				50ACB1DE2AEECBA8007C330C /* Report.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				502242912AF6F0FA00506C45 /* ReportComponentTests.swift in Sources */,
 				50ACB1F92AF2F44B007C330C /* DateReportTests.swift in Sources */,
 				50ACB1FB2AF2F73C007C330C /* DateProviderMock.swift in Sources */,
 				5022428F2AF5C93300506C45 /* CPUUsageReportTests.swift in Sources */,

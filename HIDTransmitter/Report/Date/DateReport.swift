@@ -10,10 +10,7 @@ import Foundation
 class DateReport: ReportComponent {
     
     let maxSize: Int
-
-    var componentType: ComponentType {
-        .date
-    }
+    let type: ComponentType = .date
 
     var display: String {
         guard let date else { return "" }

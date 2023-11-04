@@ -10,10 +10,7 @@ import Foundation
 class HostReport: ReportComponent {
 
     let maxSize: Int
-
-    var componentType: ComponentType {
-        .host
-    }
+    let type: ComponentType = .host
 
     var display: String {
         name ?? ""
