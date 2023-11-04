@@ -9,7 +9,22 @@ import Foundation
 
 protocol ReportComponent {
 
+    var maxSize: Int { get }
     var componentType: ComponentType { get }
+    var display: String { get }
+    var byteArray: [UInt8] { get }
+
+    func updateData()
+
+}
+
+extension ReportComponent {
+
+    var maxByteArraySize: Int {
+        maxSize - componentType.headerSize
+    }
+
+    func updateData() {}
 
 }
 
@@ -18,7 +33,7 @@ enum ComponentType: Int {
     case host
     case cpuUsage
 
-    var maxLength: Int {
-        30
+    var headerSize: Int {
+        2
     }
 }

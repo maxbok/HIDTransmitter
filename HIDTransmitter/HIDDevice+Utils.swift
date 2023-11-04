@@ -28,7 +28,7 @@ extension HIDDevice {
     }
 
     private func formattedData(_ data: Data, reportId: UInt8) -> (data: UnsafePointer<UInt8>, count: Int)? {
-        var bytesArray = [UInt8](data)
+        var bytesArray: [UInt8] = Array(data)
         bytesArray.insert(reportId, at: 0)
         bytesArray.append(0)// hack every report should end with 0 byte
 

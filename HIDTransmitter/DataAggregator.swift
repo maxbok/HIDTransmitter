@@ -13,7 +13,7 @@ class DataAggregator {
 
     private lazy var timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: transmit)
 
-    private let cpuUsageReport = CPUUsageReport()
+    private let cpuUsageReport = CPUUsageReport(reportSize: 32)
 
     func start() {
         cpuUsageReport.setup()
@@ -25,8 +25,8 @@ class DataAggregator {
         cpuUsageReport.updateInfo()
 
         let components: [ReportComponent] = [
-            DateReport(), 
-            HostReport(),
+            DateReport(reportSize: 32),
+            HostReport(reportSize: 32),
             cpuUsageReport
         ]
         let report = Report(components: components)

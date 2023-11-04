@@ -9,13 +9,25 @@ import Foundation
 
 class CPUUsageReport: ReportComponent {
 
+    let maxSize: Int
+
     var componentType: ComponentType {
         .cpuUsage
     }
 
+    var display: String {
+        ""
+    }
+
+    var byteArray: [UInt8] {
+        []
+    }
+
+    private var coreUsages: [CoreUsage] = []
+
     private var numCPUs: uint = 0
 
-    private var cpuInfo: processor_info_array_t!
+    private var cpuInfo: processor_info_array_t! // TODO: not force unwrap
     private var prevCpuInfo: processor_info_array_t?
     private var numCpuInfo: mach_msg_type_number_t = 0
     private var numPrevCpuInfo: mach_msg_type_number_t = 0
@@ -31,7 +43,9 @@ class CPUUsageReport: ReportComponent {
         }
     }
 
-    init() {}
+    init(reportSize: Int) {
+        maxSize = reportSize
+    }
 
     func setup() {
         let mibKeys = [CTL_HW, HW_NCPU]
@@ -53,7 +67,7 @@ class CPUUsageReport: ReportComponent {
         
         guard err == KERN_SUCCESS else { return }
 
-        let coreUsages = coreUsages()
+        coreUsages = buildCoreUsages()
 
         for (i, coreUsage) in coreUsages.enumerated() {
             print(String(format: "Core: %u Usage: %d%%", i, coreUsage.percentValue))
@@ -68,11 +82,12 @@ class CPUUsageReport: ReportComponent {
         prevCpuInfo = cpuInfo
         numPrevCpuInfo = numCpuInfo
 
+    // TODO: Put above host_processor_info instead
         cpuInfo = nil
         numCpuInfo = 0
     }
 
-    private func coreUsages() -> [CoreUsage] {
+    private func buildCoreUsages() -> [CoreUsage] {
         var coreUsages: [CoreUsage] = []
 
         CPUUsageLock.lock()

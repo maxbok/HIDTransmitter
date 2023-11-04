@@ -16,7 +16,12 @@ struct Report {
     }
 
     var data: Data? {
-        nil
+        components.forEach { component in
+            component.updateData()
+            print(component.display)
+        }
+
+        return nil
     }
 
 }

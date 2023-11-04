@@ -15,22 +15,16 @@ final class HostReportTests: XCTestCase {
 
     override func setUp() {
         hostMock = HostMock(localizedName: "host name")
-        report = HostReport(host: hostMock)
+        report = HostReport(reportSize: 12, host: hostMock)
     }
 
     func testByteArray() {
-        let byteArray = report.byteArray
+        XCTAssertEqual(String(bytes: report.byteArray, encoding: .utf8),
+                       "host name")
 
-        XCTAssertEqual(byteArray.count, 9)
-        XCTAssertEqual(String(UnicodeScalar(byteArray[0])), "h")
-        XCTAssertEqual(String(UnicodeScalar(byteArray[1])), "o")
-        XCTAssertEqual(String(UnicodeScalar(byteArray[2])), "s")
-        XCTAssertEqual(String(UnicodeScalar(byteArray[3])), "t")
-        XCTAssertEqual(String(UnicodeScalar(byteArray[4])), " ")
-        XCTAssertEqual(String(UnicodeScalar(byteArray[5])), "n")
-        XCTAssertEqual(String(UnicodeScalar(byteArray[6])), "a")
-        XCTAssertEqual(String(UnicodeScalar(byteArray[7])), "m")
-        XCTAssertEqual(String(UnicodeScalar(byteArray[8])), "e")
+        hostMock.localizedName = "test super super long long looooong"
+        XCTAssertEqual(String(bytes: report.byteArray, encoding: .utf8),
+                       "test super")
     }
 
     func testDisplay() {
@@ -38,7 +32,7 @@ final class HostReportTests: XCTestCase {
         XCTAssertEqual(report.display, "test")
 
         hostMock.localizedName = "test super super long long looooong"
-        XCTAssertEqual(report.display, "test super super long long loo")
+        XCTAssertEqual(report.display, "test super super long long looooong")
     }
 
 }

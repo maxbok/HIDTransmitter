@@ -26,6 +26,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let aggregator = DataAggregator()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        guard NSClassFromString("XCTestCase") == nil  else { return }
+
         monitor.start()
 
         aggregator.block = monitor.write(report:)

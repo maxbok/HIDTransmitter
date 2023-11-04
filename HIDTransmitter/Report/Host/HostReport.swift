@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct HostReport: ReportComponent {
+class HostReport: ReportComponent {
+
+    let maxSize: Int
 
     var componentType: ComponentType {
         .host
@@ -20,25 +22,23 @@ struct HostReport: ReportComponent {
     var byteArray: [UInt8] {
         guard let name else { return [] }
 
-        return [UInt8](name.utf8)
+        let array: [UInt8] = Array(name.utf8)
+
+        guard array.count < maxByteArraySize else {
+            return Array(array[0..<maxByteArraySize])
+        }
+        return array
     }
 
     private var name: String? {
-        guard let name = host.localizedName else { return nil }
-
-        return String(name.prefix(componentType.maxLength))
+        host.localizedName
     }
 
     private let host: HostConvertible
 
-    init(host: HostConvertible = Host.current()) {
+    init(reportSize: Int, host: HostConvertible = Host.current()) {
+        maxSize = reportSize
         self.host = host
     }
 
 }
-
-protocol HostConvertible {
-    var localizedName: String? { get }
-}
-
-extension Host: HostConvertible {}
