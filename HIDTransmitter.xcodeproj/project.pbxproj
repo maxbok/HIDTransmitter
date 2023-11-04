@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5022428B2AF5C7CB00506C45 /* CPUInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022428A2AF5C7CB00506C45 /* CPUInfoProvider.swift */; };
+		5022428D2AF5C8E500506C45 /* CPUInfoProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022428C2AF5C8E500506C45 /* CPUInfoProviderMock.swift */; };
+		5022428F2AF5C93300506C45 /* CPUUsageReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022428E2AF5C93300506C45 /* CPUUsageReportTests.swift */; };
 		509BDF2C2AE9B9DB0081B12E /* HIDTransmitterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BDF2B2AE9B9DB0081B12E /* HIDTransmitterApp.swift */; };
 		509BDF2E2AE9B9DB0081B12E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BDF2D2AE9B9DB0081B12E /* ContentView.swift */; };
 		509BDF302AE9B9DD0081B12E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509BDF2F2AE9B9DD0081B12E /* Assets.xcassets */; };
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5022428A2AF5C7CB00506C45 /* CPUInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUInfoProvider.swift; sourceTree = "<group>"; };
+		5022428C2AF5C8E500506C45 /* CPUInfoProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUInfoProviderMock.swift; sourceTree = "<group>"; };
+		5022428E2AF5C93300506C45 /* CPUUsageReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUUsageReportTests.swift; sourceTree = "<group>"; };
 		509BDF282AE9B9DB0081B12E /* HIDTransmitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HIDTransmitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		509BDF2B2AE9B9DB0081B12E /* HIDTransmitterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIDTransmitterApp.swift; sourceTree = "<group>"; };
 		509BDF2D2AE9B9DB0081B12E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		502242892AF5C7B700506C45 /* CPU usage */ = {
+			isa = PBXGroup;
+			children = (
+				50ACB1E62AEF00D3007C330C /* CPUUsageReport.swift */,
+				5022428A2AF5C7CB00506C45 /* CPUInfoProvider.swift */,
+			);
+			path = "CPU usage";
+			sourceTree = "<group>";
+		};
 		509BDF1F2AE9B9DB0081B12E = {
 			isa = PBXGroup;
 			children = (
@@ -130,7 +145,7 @@
 				50ACB1E42AEEFE5E007C330C /* ReportComponent.swift */,
 				50ACB1FE2AF3EA36007C330C /* Date */,
 				50ACB2012AF3EA53007C330C /* Host */,
-				50ACB1E62AEF00D3007C330C /* CPUUsageReport.swift */,
+				502242892AF5C7B700506C45 /* CPU usage */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -140,6 +155,7 @@
 			children = (
 				50ACB1EE2AF1B251007C330C /* HostReportTests.swift */,
 				50ACB1F82AF2F44B007C330C /* DateReportTests.swift */,
+				5022428E2AF5C93300506C45 /* CPUUsageReportTests.swift */,
 				50ACB1F52AF1B525007C330C /* Mocks */,
 			);
 			path = HIDTransmitterTests;
@@ -150,6 +166,7 @@
 			children = (
 				50ACB1F62AF1B52F007C330C /* HostMock.swift */,
 				50ACB1FA2AF2F73C007C330C /* DateProviderMock.swift */,
+				5022428C2AF5C8E500506C45 /* CPUInfoProviderMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -289,6 +306,7 @@
 				509BDF2C2AE9B9DB0081B12E /* HIDTransmitterApp.swift in Sources */,
 				50ACB1E32AEEFB15007C330C /* HostReport.swift in Sources */,
 				50ACB1DC2AEDBA8D007C330C /* HIDDevice+Utils.swift in Sources */,
+				5022428B2AF5C7CB00506C45 /* CPUInfoProvider.swift in Sources */,
 				50ACB1DE2AEECBA8007C330C /* Report.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,8 +317,10 @@
 			files = (
 				50ACB1F92AF2F44B007C330C /* DateReportTests.swift in Sources */,
 				50ACB1FB2AF2F73C007C330C /* DateProviderMock.swift in Sources */,
+				5022428F2AF5C93300506C45 /* CPUUsageReportTests.swift in Sources */,
 				50ACB1EF2AF1B251007C330C /* HostReportTests.swift in Sources */,
 				50ACB1F72AF1B52F007C330C /* HostMock.swift in Sources */,
+				5022428D2AF5C8E500506C45 /* CPUInfoProviderMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,12 @@ class DataAggregator {
 
     private let cpuUsageReport = CPUUsageReport(reportSize: 32)
 
+    private lazy var components: [ReportComponent] = [
+        DateReport(reportSize: 32),
+        HostReport(reportSize: 32),
+        cpuUsageReport
+    ]
+
     func start() {
         cpuUsageReport.setup()
 
@@ -22,13 +28,6 @@ class DataAggregator {
     }
 
     private func transmit(_ timer: Timer) {
-        cpuUsageReport.updateInfo()
-
-        let components: [ReportComponent] = [
-            DateReport(reportSize: 32),
-            HostReport(reportSize: 32),
-            cpuUsageReport
-        ]
         let report = Report(components: components)
         block?(report)
     }

@@ -1,29 +1,20 @@
 //
-//  CPUUsageReport.swift
+//  CPUInfoProvider.swift
 //  HIDTransmitter
 //
-//  Created by Maxime Bokobza on 29/10/2023.
+//  Created by Maxime Bokobza on 04/11/2023.
 //
 
 import Foundation
 
-class CPUUsageReport: ReportComponent {
+protocol CPUInfoProviderConvertible {
 
-    let maxSize: Int
+    func setup()
+    func coreUsages() -> [CPUInfoProvider.CoreUsage]
 
-    var componentType: ComponentType {
-        .cpuUsage
-    }
+}
 
-    var display: String {
-        ""
-    }
-
-    var byteArray: [UInt8] {
-        []
-    }
-
-    private var coreUsages: [CoreUsage] = []
+class CPUInfoProvider: CPUInfoProviderConvertible {
 
     private var numCPUs: uint = 0
 
@@ -33,7 +24,7 @@ class CPUUsageReport: ReportComponent {
     private var numPrevCpuInfo: mach_msg_type_number_t = 0
     private let CPUUsageLock = NSLock()
 
-    private struct CoreUsage {
+    struct CoreUsage {
         let inUse: Int32
         let total: Int32
 
@@ -41,10 +32,6 @@ class CPUUsageReport: ReportComponent {
             let value = Float(inUse) / Float(total)
             return UInt8(round(value * 100))
         }
-    }
-
-    init(reportSize: Int) {
-        maxSize = reportSize
     }
 
     func setup() {
@@ -59,19 +46,15 @@ class CPUUsageReport: ReportComponent {
         }
     }
 
-    func updateInfo() {
-        guard numCPUs > 0 else { return }
+    func coreUsages() -> [CoreUsage] {
+        guard numCPUs > 0 else { return [] }
 
         var numCPUsU: natural_t = 0
         let err: kern_return_t = host_processor_info(mach_host_self(), PROCESSOR_CPU_LOAD_INFO, &numCPUsU, &cpuInfo, &numCpuInfo)
-        
-        guard err == KERN_SUCCESS else { return }
 
-        coreUsages = buildCoreUsages()
+        guard err == KERN_SUCCESS else { return [] }
 
-        for (i, coreUsage) in coreUsages.enumerated() {
-            print(String(format: "Core: %u Usage: %d%%", i, coreUsage.percentValue))
-        }
+        let coreUsages = buildCoreUsages()
 
         if let prevCpuInfo {
             // vm_deallocate Swift usage credit rsfinn: https://stackoverflow.com/a/48630296/1033581
@@ -82,9 +65,11 @@ class CPUUsageReport: ReportComponent {
         prevCpuInfo = cpuInfo
         numPrevCpuInfo = numCpuInfo
 
-    // TODO: Put above host_processor_info instead
+        // TODO: Put above host_processor_info instead
         cpuInfo = nil
         numCpuInfo = 0
+
+        return coreUsages
     }
 
     private func buildCoreUsages() -> [CoreUsage] {
