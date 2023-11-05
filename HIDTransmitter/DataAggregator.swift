@@ -42,11 +42,11 @@ class DataAggregator {
               let cpuUsageReport
         else { return }
 
-        dateTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
+        dateTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
             self?.block?(dateReport)
         }
 
-        cpuUsageTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+        cpuUsageTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { [weak self] _ in
             self?.block?(cpuUsageReport)
         }
 
