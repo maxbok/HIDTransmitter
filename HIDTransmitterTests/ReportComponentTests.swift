@@ -18,24 +18,24 @@ final class ReportComponentTests: XCTestCase {
 
     func testCompomentTypeData() {
         report.type = .host
-        XCTAssertEqual(report.data.toByteArray(), [0, 0])
+        XCTAssertEqual(report.toByteArray(), [0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
         report.type = .date
-        XCTAssertEqual(report.data.toByteArray(), [1, 0])
+        XCTAssertEqual(report.toByteArray(), [1, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
         report.type = .cpuUsage
-        XCTAssertEqual(report.data.toByteArray(), [2, 0])
+        XCTAssertEqual(report.toByteArray(), [2, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     }
 
     func testData() {
         report.byteArray = []
-        XCTAssertEqual(report.data.toByteArray(), [0, 0])
+        XCTAssertEqual(report.toByteArray(), [0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
         report.byteArray = [48]
-        XCTAssertEqual(report.data.toByteArray(), [0, 1, 48])
+        XCTAssertEqual(report.toByteArray(), [0, 1, 48, 0, 0, 0, 0, 0, 0, 0])
 
         report.byteArray = [10, 8, 9, 6, 7, 4, 5, 3, 2, 1]
-        XCTAssertEqual(report.data.toByteArray(), [0, 10, 10, 8, 9, 6, 7, 4, 5, 3, 2, 1])
+        XCTAssertEqual(report.toByteArray(), [0, 10, 10, 8, 9, 6, 7, 4, 5, 0])
     }
 
 }
@@ -49,10 +49,11 @@ class ReportMock: ReportComponent {
 
 }
 
-private extension Data {
+private extension ReportComponent {
 
     func toByteArray() -> [UInt8] {
-        Array(self)
+        let buffer = UnsafeBufferPointer(start: data!.pointer, count: data!.count)
+        return Array(buffer)
     }
 
 }

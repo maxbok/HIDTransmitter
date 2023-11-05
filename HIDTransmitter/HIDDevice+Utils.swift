@@ -11,13 +11,13 @@ import USBDeviceSwift
 extension HIDDevice {
 
     func write(report: ReportComponent) {
-        let formatterData = report.data
+        guard let formatterData = report.data else { return }
 
         IOHIDDeviceSetReport(
             device,
             kIOHIDReportTypeOutput,
             CFIndex(report.type.rawValue),
-            formatterData.data,
+            formatterData.pointer,
             formatterData.count
         )
 

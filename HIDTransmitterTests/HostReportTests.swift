@@ -24,7 +24,7 @@ final class HostReportTests: XCTestCase {
 
         hostMock.localizedName = "test super super long long looooong"
         XCTAssertEqual(String(bytes: report.byteArray, encoding: .utf8),
-                       "test super")
+                       "test supe")
     }
 
     func testDisplay() {

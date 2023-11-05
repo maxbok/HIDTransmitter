@@ -13,7 +13,7 @@ protocol ReportComponent {
     var type: ComponentType { get }
     var display: String { get }
     var byteArray: [UInt8] { get }
-    var data: (data: UnsafePointer<UInt8>, count: Int) { get }
+    var data: (pointer: UnsafePointer<UInt8>, count: Int)? { get }
 
     func updateData()
 
@@ -25,14 +25,24 @@ extension ReportComponent {
         maxSize - (headerSize + tail.count)
     }
 
-    var data: (data: UnsafePointer<UInt8>, count: Int) {
-        let report = header + byteArray + tail
+    var data: (pointer: UnsafePointer<UInt8>, count: Int)? {
+        var report = header + Array(byteArray.prefix(maxByteArraySize)) + tail
 
-        let correctData = Data(bytes: UnsafePointer<UInt8>(report), count: maxSize)
+        let delta = maxSize - report.count
 
-        let pointer = (correctData as NSData).bytes.bindMemory(to: UInt8.self, capacity: correctData.count)
+        let emptyTail = Array(repeating: UInt8(0), count: delta)
 
-        return (pointer, correctData.count)
+        report += emptyTail
+
+        let pointer = (Data(report) as NSData).bytes.bindMemory(to: UInt8.self, capacity: report.count)
+
+        var byteReport: [UInt8] = []
+        for i in 0..<report.count {
+            byteReport.append(pointer[i])
+        }
+        print(byteReport)
+
+        return (pointer, report.count)
     }
 
     private var headerSize: Int {

@@ -29,7 +29,7 @@ final class DateReportTests: XCTestCase {
     }
 
     func testByteArray() {
-        XCTAssertEqual(String(bytes: report.byteArray, encoding: .utf8), "123405062007")
+        XCTAssertEqual(report.byteArray, [12, 34, 5, 6, 215, 7]) // 7 * 256 + 215 = 2007
     }
 
 }

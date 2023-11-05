@@ -21,8 +21,15 @@ class DateReport: ReportComponent {
     var byteArray: [UInt8] {
         guard let date else { return [] }
 
-        let dateString = DateFormatter.byteArrayFormatter.string(from: date)
-        return Array(dateString.utf8)
+        let calendar = Calendar.current
+
+        let hour = UInt8(calendar.component(.hour, from: date))
+        let minute = UInt8(calendar.component(.minute, from: date))
+        let day = UInt8(calendar.component(.day, from: date))
+        let month = UInt8(calendar.component(.month, from: date))
+        let year = UInt16(calendar.component(.year, from: date))
+
+        return [hour, minute, day, month] + year.toByteArray()
     }
 
     private var date: Date?
@@ -39,7 +46,7 @@ class DateReport: ReportComponent {
 
 }
 
-extension DateFormatter {
+private extension DateFormatter {
 
     static let displayFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -47,10 +54,20 @@ extension DateFormatter {
         return formatter
     }()
 
-    static let byteArrayFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HHmmddMMyyyy"
-        return formatter
-    }()
+}
+
+private extension UInt16 {
+
+    func toByteArray() -> [UInt8] {
+        let count = MemoryLayout<Self>.size
+
+        let bytesPointer = withUnsafePointer(to: self) {
+            $0.withMemoryRebound(to: UInt8.self, capacity: count) { pointer in
+                UnsafeBufferPointer(start: pointer, count: count)
+            }
+        }
+
+        return Array(bytesPointer)
+    }
 
 }
