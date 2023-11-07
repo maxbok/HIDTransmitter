@@ -26,9 +26,10 @@ extension ReportComponent {
     }
 
     var data: (pointer: UnsafePointer<UInt8>, count: Int)? {
-        var report = header + Array(byteArray.prefix(maxByteArraySize)) + tail
+        let content = byteArray.isEmpty ? [] : Array(byteArray.prefix(maxByteArraySize))
+        var report = header + content + tail
 
-        let delta = maxSize - report.count
+        let delta = max(maxSize - report.count, 0)
 
         let emptyTail = Array(repeating: UInt8(0), count: delta)
 
@@ -68,6 +69,7 @@ extension ReportComponent {
 }
 
 enum ComponentType: UInt8 {
+    case locked
     case host
     case date
     case cpuUsage

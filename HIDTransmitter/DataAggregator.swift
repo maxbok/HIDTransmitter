@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class DataAggregator {
 
@@ -14,15 +15,21 @@ class DataAggregator {
     private var dateTimer: Timer?
     private var cpuUsageTimer: Timer?
 
+    private var lockedReport: LockedReport?
     private var hostReport: HostReport?
     private var dateReport: DateReport?
     private var cpuUsageReport: CPUUsageReport?
 
+    private var disposables: Set<AnyCancellable> = []
+
+    init() {
+        setupBindings()
+    }
+
     func start(with reportSize: Int) {
         setupReportComponents(with: reportSize)
 
-        startTimers()
-        hostReport.map { block?($0) }
+        start()
     }
 
     func stop() {
@@ -30,7 +37,13 @@ class DataAggregator {
         cpuUsageTimer?.invalidate()
     }
 
+    private func start() {
+        startTimers()
+        hostReport.map { block?($0) }
+    }
+
     private func setupReportComponents(with reportSize: Int) {
+        lockedReport = LockedReport(reportSize: reportSize)
         hostReport = HostReport(reportSize: reportSize)
         dateReport = DateReport(reportSize: reportSize)
         cpuUsageReport = CPUUsageReport(reportSize: reportSize)
@@ -52,6 +65,27 @@ class DataAggregator {
 
         dateTimer?.fire()
         cpuUsageTimer?.fire()
+    }
+
+}
+
+private extension DataAggregator {
+
+    func setupBindings() {
+        DistributedNotificationCenter.default().publisher(for: Notification.Name("com.apple.screenIsUnlocked"))
+            .sink { [weak self] notif in
+                self?.start()
+            }
+            .store(in: &disposables)
+
+        DistributedNotificationCenter.default().publisher(for: Notification.Name("com.apple.screenIsLocked"))
+            .sink { [weak self] notif in
+                guard let self else { return }
+
+                self.stop()
+                self.lockedReport.map { self.block?($0) }
+            }
+            .store(in: &disposables)
     }
 
 }

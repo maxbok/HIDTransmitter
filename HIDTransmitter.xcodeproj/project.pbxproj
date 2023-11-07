@@ -29,6 +29,7 @@
 		50ACB1FB2AF2F73C007C330C /* DateProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1FA2AF2F73C007C330C /* DateProviderMock.swift */; };
 		50ACB1FD2AF3E7DE007C330C /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1FC2AF3E7DE007C330C /* DateProvider.swift */; };
 		50ACB2002AF3EA44007C330C /* HostConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1FF2AF3EA44007C330C /* HostConvertible.swift */; };
+		50ED84712AFAEDA800E70795 /* LockedReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED84702AFAEDA800E70795 /* LockedReport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		50ACB1FA2AF2F73C007C330C /* DateProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProviderMock.swift; sourceTree = "<group>"; };
 		50ACB1FC2AF3E7DE007C330C /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
 		50ACB1FF2AF3EA44007C330C /* HostConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostConvertible.swift; sourceTree = "<group>"; };
+		50ED84702AFAEDA800E70795 /* LockedReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedReport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				50ACB1E42AEEFE5E007C330C /* ReportComponent.swift */,
+				50ED84702AFAEDA800E70795 /* LockedReport.swift */,
 				50ACB1FE2AF3EA36007C330C /* Date */,
 				50ACB2012AF3EA53007C330C /* Host */,
 				502242892AF5C7B700506C45 /* CPU usage */,
@@ -307,6 +310,7 @@
 				50ACB1E32AEEFB15007C330C /* HostReport.swift in Sources */,
 				50ACB1DC2AEDBA8D007C330C /* HIDDevice+Utils.swift in Sources */,
 				5022428B2AF5C7CB00506C45 /* CPUInfoProvider.swift in Sources */,
+				50ED84712AFAEDA800E70795 /* LockedReport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

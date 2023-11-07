@@ -29,6 +29,8 @@ class CPUInfoProvider: CPUInfoProviderConvertible {
         let total: Int32
 
         var percentValue: UInt8 {
+            guard total > 0 else { return 0 }
+
             let value = Float(inUse) / Float(total)
             return UInt8(round(value * 100))
         }

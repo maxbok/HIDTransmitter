@@ -13,6 +13,8 @@ class DeviceMonitor {
 
     @Published private(set) var device: HIDDevice?
 
+    private let aggregator = DataAggregator()
+
     private let rfDeviceMonitor: HIDDeviceMonitor
     private let rfDeviceDaemon: Thread
 
@@ -34,6 +36,8 @@ class DeviceMonitor {
     }
 
     func start() {
+        aggregator.block = write(reportComponent:)
+
         setupBindings()
 
         rfDeviceDaemon.start()
@@ -49,6 +53,17 @@ class DeviceMonitor {
     // MARK: -
 
     func setupBindings() {
+        $device
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] device in
+                if let device {
+                    self?.aggregator.start(with: device.reportSize)
+                } else {
+                    self?.aggregator.stop()
+                }
+            }
+            .store(in: &disposables)
+
         NotificationCenter.default.publisher(for: .HIDDeviceConnected)
             .sink { [weak self] notification in
                 guard let self,
