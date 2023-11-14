@@ -20,8 +20,6 @@ extension HIDDevice {
             formatterData.pointer,
             formatterData.count
         )
-
-        print(report.display)
     }
 
 }

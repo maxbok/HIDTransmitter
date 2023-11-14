@@ -37,12 +37,6 @@ extension ReportComponent {
 
         let pointer = (Data(report) as NSData).bytes.bindMemory(to: UInt8.self, capacity: report.count)
 
-        var byteReport: [UInt8] = []
-        for i in 0..<report.count {
-            byteReport.append(pointer[i])
-        }
-        print(byteReport)
-
         return (pointer, report.count)
     }
 

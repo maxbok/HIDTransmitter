@@ -72,8 +72,6 @@ class DeviceMonitor {
                 else { return }
                 
                 self.device = hidDevice
-
-                print("Device connected: \(hidDevice)")
             }
             .store(in: &disposables)
 
@@ -86,8 +84,6 @@ class DeviceMonitor {
                 else { return }
 
                 device = nil
-
-                print("Device disconnected: \(id)")
             }
             .store(in: &disposables)
     }
