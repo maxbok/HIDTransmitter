@@ -67,6 +67,8 @@
 		50ACB1FA2AF2F73C007C330C /* DateProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProviderMock.swift; sourceTree = "<group>"; };
 		50ACB1FC2AF3E7DE007C330C /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
 		50ACB1FF2AF3EA44007C330C /* HostConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostConvertible.swift; sourceTree = "<group>"; };
+		50C50FD72B01823800D56D10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		50C50FD82B01824E00D56D10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		50C50FDC2B04251200D56D10 /* MenuBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContent.swift; sourceTree = "<group>"; };
 		50C50FDE2B04251B00D56D10 /* MenuBarLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarLabel.swift; sourceTree = "<group>"; };
 		50ED84702AFAEDA800E70795 /* LockedReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedReport.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		509BDF2A2AE9B9DB0081B12E /* HIDTransmitter */ = {
 			isa = PBXGroup;
 			children = (
+				50C50FD82B01824E00D56D10 /* Info.plist */,
 				509BDF2B2AE9B9DB0081B12E /* HIDTransmitterApp.swift */,
 				50C50FDB2B04250200D56D10 /* MenuBar */,
 				509BDF412AED96EE0081B12E /* DeviceMonitor.swift */,
@@ -157,6 +160,7 @@
 		50ACB1ED2AF1B251007C330C /* HIDTransmitterTests */ = {
 			isa = PBXGroup;
 			children = (
+				50C50FD72B01823800D56D10 /* Info.plist */,
 				50ACB1EE2AF1B251007C330C /* HostReportTests.swift */,
 				50ACB1F82AF2F44B007C330C /* DateReportTests.swift */,
 				5022428E2AF5C93300506C45 /* CPUUsageReportTests.swift */,
@@ -310,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				509BDF422AED96EE0081B12E /* DeviceMonitor.swift in Sources */,
+				50C50FDD2B04251200D56D10 /* MenuBarContent.swift in Sources */,
 				50ACB1E52AEEFE5E007C330C /* ReportComponent.swift in Sources */,
 				50ACB1E72AEF00D3007C330C /* CPUUsageReport.swift in Sources */,
 				50ACB1FD2AF3E7DE007C330C /* DateProvider.swift in Sources */,
@@ -482,6 +487,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HIDTransmitter/Info.plist;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -509,6 +516,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HIDTransmitter/Info.plist;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -530,6 +539,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GK3FZH5543;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HIDTransmitterTests/Info.plist;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.codehawks.HIDTransmitterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -547,6 +557,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GK3FZH5543;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HIDTransmitterTests/Info.plist;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.codehawks.HIDTransmitterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

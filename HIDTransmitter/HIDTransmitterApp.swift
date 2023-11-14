@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import ServiceManagement
 
 @main
 struct HIDTransmitterApp: App {
@@ -32,6 +33,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         monitor.start()
+
+        try? SMAppService.mainApp.register()
     }
 
 }
