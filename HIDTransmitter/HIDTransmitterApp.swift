@@ -14,9 +14,12 @@ struct HIDTransmitterApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra {
+            MenuBarContent()
+        } label: {
+            MenuBarLabel(deviceMonitor: appDelegate.monitor)
         }
+
     }
 
 }

@@ -12,7 +12,6 @@
 		5022428F2AF5C93300506C45 /* CPUUsageReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022428E2AF5C93300506C45 /* CPUUsageReportTests.swift */; };
 		502242912AF6F0FA00506C45 /* ReportComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502242902AF6F0FA00506C45 /* ReportComponentTests.swift */; };
 		509BDF2C2AE9B9DB0081B12E /* HIDTransmitterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BDF2B2AE9B9DB0081B12E /* HIDTransmitterApp.swift */; };
-		509BDF2E2AE9B9DB0081B12E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BDF2D2AE9B9DB0081B12E /* ContentView.swift */; };
 		509BDF302AE9B9DD0081B12E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509BDF2F2AE9B9DD0081B12E /* Assets.xcassets */; };
 		509BDF332AE9B9DD0081B12E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509BDF322AE9B9DD0081B12E /* Preview Assets.xcassets */; };
 		509BDF402AE9C7470081B12E /* USBDeviceSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 509BDF3F2AE9C7470081B12E /* USBDeviceSwift */; };
@@ -29,6 +28,8 @@
 		50ACB1FB2AF2F73C007C330C /* DateProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1FA2AF2F73C007C330C /* DateProviderMock.swift */; };
 		50ACB1FD2AF3E7DE007C330C /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1FC2AF3E7DE007C330C /* DateProvider.swift */; };
 		50ACB2002AF3EA44007C330C /* HostConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACB1FF2AF3EA44007C330C /* HostConvertible.swift */; };
+		50C50FDD2B04251200D56D10 /* MenuBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C50FDC2B04251200D56D10 /* MenuBarContent.swift */; };
+		50C50FDF2B04251B00D56D10 /* MenuBarLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C50FDE2B04251B00D56D10 /* MenuBarLabel.swift */; };
 		50ED84712AFAEDA800E70795 /* LockedReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED84702AFAEDA800E70795 /* LockedReport.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +50,6 @@
 		502242902AF6F0FA00506C45 /* ReportComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportComponentTests.swift; sourceTree = "<group>"; };
 		509BDF282AE9B9DB0081B12E /* HIDTransmitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HIDTransmitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		509BDF2B2AE9B9DB0081B12E /* HIDTransmitterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIDTransmitterApp.swift; sourceTree = "<group>"; };
-		509BDF2D2AE9B9DB0081B12E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		509BDF2F2AE9B9DD0081B12E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		509BDF322AE9B9DD0081B12E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		509BDF342AE9B9DD0081B12E /* HIDTransmitter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HIDTransmitter.entitlements; sourceTree = "<group>"; };
@@ -67,6 +67,8 @@
 		50ACB1FA2AF2F73C007C330C /* DateProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProviderMock.swift; sourceTree = "<group>"; };
 		50ACB1FC2AF3E7DE007C330C /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
 		50ACB1FF2AF3EA44007C330C /* HostConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostConvertible.swift; sourceTree = "<group>"; };
+		50C50FDC2B04251200D56D10 /* MenuBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContent.swift; sourceTree = "<group>"; };
+		50C50FDE2B04251B00D56D10 /* MenuBarLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarLabel.swift; sourceTree = "<group>"; };
 		50ED84702AFAEDA800E70795 /* LockedReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedReport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				509BDF2B2AE9B9DB0081B12E /* HIDTransmitterApp.swift */,
-				509BDF2D2AE9B9DB0081B12E /* ContentView.swift */,
+				50C50FDB2B04250200D56D10 /* MenuBar */,
 				509BDF412AED96EE0081B12E /* DeviceMonitor.swift */,
 				50ACB1DB2AEDBA8D007C330C /* HIDDevice+Utils.swift */,
 				509BDF432AEDB5DD0081B12E /* DataAggregator.swift */,
@@ -190,6 +192,15 @@
 				50ACB1FF2AF3EA44007C330C /* HostConvertible.swift */,
 			);
 			path = Host;
+			sourceTree = "<group>";
+		};
+		50C50FDB2B04250200D56D10 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				50C50FDC2B04251200D56D10 /* MenuBarContent.swift */,
+				50C50FDE2B04251B00D56D10 /* MenuBarLabel.swift */,
+			);
+			path = MenuBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,7 +313,7 @@
 				50ACB1E52AEEFE5E007C330C /* ReportComponent.swift in Sources */,
 				50ACB1E72AEF00D3007C330C /* CPUUsageReport.swift in Sources */,
 				50ACB1FD2AF3E7DE007C330C /* DateProvider.swift in Sources */,
-				509BDF2E2AE9B9DB0081B12E /* ContentView.swift in Sources */,
+				50C50FDF2B04251B00D56D10 /* MenuBarLabel.swift in Sources */,
 				509BDF442AEDB5DD0081B12E /* DataAggregator.swift in Sources */,
 				50ACB1E02AEEFABD007C330C /* DateReport.swift in Sources */,
 				50ACB2002AF3EA44007C330C /* HostConvertible.swift in Sources */,
