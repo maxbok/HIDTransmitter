@@ -5,6 +5,7 @@
 //  Created by Maxime Bokobza on 28/10/2023.
 //
 
+import AppKit
 import Foundation
 import Combine
 import USBDeviceSwift
@@ -12,6 +13,8 @@ import USBDeviceSwift
 class DeviceMonitor {
 
     @Published private(set) var device: HIDDevice?
+
+    @Published private(set) var isLocked = false
 
     private let aggregator = DataAggregator()
 
@@ -50,13 +53,14 @@ class DeviceMonitor {
         device.write(report: reportComponent)
     }
 
-    // MARK: -
+    // MARK: - Bindings
 
-    func setupBindings() {
-        $device
+    private func setupBindings() {
+        $device.combineLatest($isLocked)
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] device in
-                if let device {
+            .sink { [weak self] device, isLocked in
+                if let device,
+                   !isLocked {
                     self?.aggregator.start(with: device.reportSize)
                 } else {
                     self?.aggregator.stop()
@@ -70,7 +74,7 @@ class DeviceMonitor {
                       let hidDevice = notification.device,
                       self.device == nil
                 else { return }
-                
+
                 self.device = hidDevice
             }
             .store(in: &disposables)
@@ -86,6 +90,40 @@ class DeviceMonitor {
                 device = nil
             }
             .store(in: &disposables)
+
+        screenLockedPublisher.combineLatest(screensDidSleep)
+            .sink { [weak self] _ in
+                self?.isLocked = true
+            }
+            .store(in: &disposables)
+
+        screenUnlockedPublisher.combineLatest(screensDidWake)
+            .sink { [weak self] _ in
+                self?.isLocked = false
+            }
+            .store(in: &disposables)
+    }
+
+}
+
+// MARK: - Notifications
+
+private extension DeviceMonitor {
+
+    var screenLockedPublisher: NotificationCenter.Publisher {
+        DistributedNotificationCenter.default().publisher(for: Notification.Name("com.apple.screenIsLocked"))
+    }
+
+    var screenUnlockedPublisher: NotificationCenter.Publisher {
+        DistributedNotificationCenter.default().publisher(for: Notification.Name("com.apple.screenIsUnlocked"))
+    }
+
+    var screensDidSleep: NotificationCenter.Publisher {
+        NSWorkspace.shared.notificationCenter.publisher(for: NSWorkspace.screensDidSleepNotification)
+    }
+
+    var screensDidWake: NotificationCenter.Publisher {
+        NSWorkspace.shared.notificationCenter.publisher(for: NSWorkspace.screensDidWakeNotification)
     }
 
 }

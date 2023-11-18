@@ -22,10 +22,6 @@ class DataAggregator {
 
     private var disposables: Set<AnyCancellable> = []
 
-    init() {
-        setupBindings()
-    }
-
     func start(with reportSize: Int) {
         setupReportComponents(with: reportSize)
 
@@ -35,10 +31,13 @@ class DataAggregator {
     func stop() {
         dateTimer?.invalidate()
         cpuUsageTimer?.invalidate()
+
+        lockedReport.map { block?($0) }
     }
 
     private func start() {
         startTimers()
+
         hostReport.map { block?($0) }
     }
 
@@ -65,27 +64,6 @@ class DataAggregator {
 
         dateTimer?.fire()
         cpuUsageTimer?.fire()
-    }
-
-}
-
-private extension DataAggregator {
-
-    func setupBindings() {
-        DistributedNotificationCenter.default().publisher(for: Notification.Name("com.apple.screenIsUnlocked"))
-            .sink { [weak self] notif in
-                self?.start()
-            }
-            .store(in: &disposables)
-
-        DistributedNotificationCenter.default().publisher(for: Notification.Name("com.apple.screenIsLocked"))
-            .sink { [weak self] notif in
-                guard let self else { return }
-
-                self.stop()
-                self.lockedReport.map { self.block?($0) }
-            }
-            .store(in: &disposables)
     }
 
 }
