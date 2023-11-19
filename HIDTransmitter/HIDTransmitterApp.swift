@@ -16,11 +16,11 @@ struct HIDTransmitterApp: App {
 
     var body: some Scene {
         MenuBarExtra {
-            MenuBarContent()
+            MenuBarContent(deviceMonitor: appDelegate.monitor)
         } label: {
             MenuBarLabel(deviceMonitor: appDelegate.monitor)
         }
-
+        .menuBarExtraStyle(.window)
     }
 
 }

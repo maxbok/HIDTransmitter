@@ -16,6 +16,8 @@ class DeviceMonitor {
 
     @Published private(set) var isLocked = false
 
+    @Published private(set) var lastReportComponent: ReportComponent?
+
     private let aggregator = DataAggregator()
 
     private let rfDeviceMonitor: HIDDeviceMonitor
@@ -46,11 +48,12 @@ class DeviceMonitor {
         rfDeviceDaemon.start()
     }
 
-    func write(reportComponent: ReportComponent) {
+    private func write(reportComponent: ReportComponent) {
         guard let device else { return }
 
         reportComponent.updateData()
         device.write(report: reportComponent)
+        lastReportComponent = reportComponent
     }
 
     // MARK: - Bindings

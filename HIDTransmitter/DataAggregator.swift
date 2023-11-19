@@ -58,7 +58,7 @@ class DataAggregator {
             self?.block?(dateReport)
         }
 
-        cpuUsageTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { [weak self] _ in
+        cpuUsageTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.block?(cpuUsageReport)
         }
 

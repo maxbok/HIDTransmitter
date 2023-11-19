@@ -12,7 +12,6 @@ struct MenuBarLabel: View {
     
     var body: some View {
         Image(systemName: viewModel.imageName)
-
     }
 
     @StateObject private var viewModel: MenuBarLabelModel
@@ -25,7 +24,7 @@ struct MenuBarLabel: View {
 
 private class MenuBarLabelModel: ObservableObject {
 
-    @Published var imageName = ""
+    @Published var imageName = "questionmark"
 
     private var cancellable: AnyCancellable?
 
