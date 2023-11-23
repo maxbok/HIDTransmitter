@@ -19,6 +19,13 @@ struct MenuBarContent: View {
 
                 reports
             }
+
+            Divider()
+
+            Button("Quit") {
+                NSApplication.shared.terminate(self)
+            }
+            .keyboardShortcut("Q")
         }
         .padding(.horizontal)
         .padding(.vertical, 8)
