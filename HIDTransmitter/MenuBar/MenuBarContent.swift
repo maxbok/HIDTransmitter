@@ -25,17 +25,17 @@ struct MenuBarContent: View {
         .frame(width: 200, alignment: .leading)
     }
 
-    @ViewBuilder
     private var reports: some View {
-        Text("Reports")
-            .font(.subheadline)
-            .foregroundStyle(.tertiary)
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Reports")
+                .font(.subheadline)
+                .foregroundStyle(.tertiary)
 
-        if let date = viewModel.date {
-            Text(date)
-        }
-        if let cpuUsage = viewModel.cpuUsage {
-            Text(cpuUsage)
+            if let date = viewModel.date {
+                Text(date)
+            }
+
+            CPUUsageView(viewModel.cpuUsage)
         }
     }
 
@@ -47,7 +47,7 @@ struct MenuBarContent: View {
 
 }
 
-private class MenuBarContentModel: ObservableObject {
+class MenuBarContentModel: ObservableObject {
 
     enum Status {
         case noKeyboard
@@ -65,7 +65,7 @@ private class MenuBarContentModel: ObservableObject {
     
     @Published private(set) var presentReports = false
     @Published private(set) var date: String?
-    @Published private(set) var cpuUsage: String?
+    @Published private(set) var cpuUsage: [UInt8] = []
 
     private var disposables: Set<AnyCancellable> = []
 
@@ -84,7 +84,7 @@ private class MenuBarContentModel: ObservableObject {
                 case .date:
                     self?.date = component?.display
                 case .cpuUsage:
-                    self?.cpuUsage = component?.display
+                    self?.cpuUsage = component?.byteArray ?? []
                 default:
                     break
                 }
@@ -92,7 +92,8 @@ private class MenuBarContentModel: ObservableObject {
             .store(in: &disposables)
 
         $date.combineLatest($cpuUsage)
-            .map { [$0.0, $0.1].contains(where: { $0 != nil }) }
+            .receive(on: DispatchQueue.main)
+            .map { $0.0 != nil || !$0.1.isEmpty }
             .sink { [weak self] in
                 self?.presentReports = $0
             }
