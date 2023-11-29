@@ -23,6 +23,8 @@ class DataAggregator {
     private var disposables: Set<AnyCancellable> = []
 
     func start(with reportSize: Int) {
+        guard dateTimer?.isValid != true else { return }
+
         setupReportComponents(with: reportSize)
 
         start()

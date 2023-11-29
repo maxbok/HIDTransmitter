@@ -94,13 +94,13 @@ class DeviceMonitor {
             }
             .store(in: &disposables)
 
-        screenLockedPublisher.combineLatest(screensDidSleep)
+        screensDidSleep
             .sink { [weak self] _ in
                 self?.isLocked = true
             }
             .store(in: &disposables)
 
-        screenUnlockedPublisher.combineLatest(screensDidWake)
+        screensDidWake
             .sink { [weak self] _ in
                 self?.isLocked = false
             }
@@ -112,14 +112,6 @@ class DeviceMonitor {
 // MARK: - Notifications
 
 private extension DeviceMonitor {
-
-    var screenLockedPublisher: NotificationCenter.Publisher {
-        DistributedNotificationCenter.default().publisher(for: Notification.Name("com.apple.screenIsLocked"))
-    }
-
-    var screenUnlockedPublisher: NotificationCenter.Publisher {
-        DistributedNotificationCenter.default().publisher(for: Notification.Name("com.apple.screenIsUnlocked"))
-    }
 
     var screensDidSleep: NotificationCenter.Publisher {
         NSWorkspace.shared.notificationCenter.publisher(for: NSWorkspace.screensDidSleepNotification)
