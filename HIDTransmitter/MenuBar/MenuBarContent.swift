@@ -12,15 +12,14 @@ struct MenuBarContent: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(viewModel.status.display)
-
-            if viewModel.presentReports {
+            if let display = viewModel.status.display {
+                Text(display)
                 Divider()
-
-                reports
             }
 
-            Divider()
+            if viewModel.presentReports {
+                reports
+            }
 
             Button("Quit") {
                 NSApplication.shared.terminate(self)
@@ -60,10 +59,10 @@ class MenuBarContentModel: ObservableObject {
         case noKeyboard
         case keyboardConnected
 
-        var display: String {
+        var display: String? {
             switch self {
             case .noKeyboard:           return "No keyboard connected"
-            case .keyboardConnected:    return "Keyboard connected"
+            case .keyboardConnected:    return nil
             }
         }
     }
