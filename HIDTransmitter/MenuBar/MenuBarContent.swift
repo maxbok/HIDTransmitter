@@ -97,9 +97,9 @@ class MenuBarContentModel: ObservableObject {
             }
             .store(in: &disposables)
 
-        $date.combineLatest($cpuUsage)
+        $date.combineLatest($cpuUsage, deviceMonitor.$device)
             .receive(on: DispatchQueue.main)
-            .map { $0.0 != nil || !$0.1.isEmpty }
+            .map { ($0.0 != nil || !$0.1.isEmpty) && $0.2 != nil }
             .sink { [weak self] in
                 self?.presentReports = $0
             }
