@@ -59,15 +59,9 @@ private extension DateFormatter {
 private extension UInt16 {
 
     func toByteArray() -> [UInt8] {
-        let count = MemoryLayout<Self>.size
-
-        let bytesPointer = withUnsafePointer(to: self) {
-            $0.withMemoryRebound(to: UInt8.self, capacity: count) { pointer in
-                UnsafeBufferPointer(start: pointer, count: count)
-            }
-        }
-
-        return Array(bytesPointer)
+        var source = self
+        let data = Data(bytes: &source, count: MemoryLayout<Self>.size)
+        return Array(data)
     }
 
 }
